@@ -1,4 +1,4 @@
-##PHANTARP [ARP Network Scanner..!]
+## PHANTARP [ARP Network Scanner..!]
 
 A fast and lightweight ARP network scanner built with Python and Scapy. 
 ####  PHANTARP discovers all active hosts on a local network, displaying their IP address, MAC address, and device manufacturer — all from a single command.
