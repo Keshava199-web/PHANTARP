@@ -1,5 +1,4 @@
-## Day-2:- PHANTARP [ARP Network Scanner..!]
-[![GitHub](https://img.shields.io/badge/GitHub-View%20Repo-black?logo=github)](https://github.com/Keshava199-web/Daily-Code/blob/main/Basic_Wifi_Scanner.py)
+##PHANTARP [ARP Network Scanner..!]
 
 A fast and lightweight ARP network scanner built with Python and Scapy. 
 ####  PHANTARP discovers all active hosts on a local network, displaying their IP address, MAC address, and device manufacturer — all from a single command.
