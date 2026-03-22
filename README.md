@@ -1,55 +1,90 @@
-## PHANTARP [ARP Network Scanner..!]
+# PHANTARP
 
-A fast and lightweight ARP network scanner built with Python and Scapy. 
-####  PHANTARP discovers all active hosts on a local network, displaying their IP address, MAC address, and device manufacturer — all from a single command.
+![PHANTARP scan output](https://raw.githubusercontent.com/Keshava199-web/PHANTARP/main/PhanArp.png)
 
-### ✨ Features
+> A fast, lightweight ARP network scanner built with Python and Scapy.
 
-ARP-based host discovery (fast & reliable on local networks)
-Manufacturer/vendor lookup from MAC address using Scapy's built-in database
-Input validation for IP range format (CIDR notation)
-Cross-platform admin/root privilege detection (Windows & Linux/macOS)
-Clean, formatted output table
+PHANTARP discovers all active hosts on your local network — revealing IP addresses, MAC addresses, and device manufacturers — from a single command.
 
-### 🖥️ Requirements
+---
 
-Python 3.x | [Scapy library](https://scapy.net/)
+## Features
 
-Install Scapy via pip:
-### bash
+- **ARP-based host discovery** — fast and reliable on local networks
+- **Vendor/manufacturer lookup** — resolves MAC addresses using Scapy's built-in OUI database
+- **Input validation** — enforces correct CIDR notation before scanning
+- **Privilege detection** — cross-platform check for root/Administrator rights (Linux, macOS, Windows)
+- **Clean output** — results displayed in a formatted, readable table
+
+---
+
+## Requirements
+
+- Python 3.x
+- [Scapy](https://scapy.net/)
+
+```bash
 pip install scapy
+```
 
-Note: On Windows, you may also need Npcap installed for Scapy to send/receive packets.
+> **Windows users:** [Npcap](https://npcap.com/) is required for Scapy to send and receive raw packets.
 
+---
 
-### 🚀-Usage
+## Usage
 
-⚠️ Must be run as root (Linux/macOS) or Administrator (Windows) — ARP scanning requires raw socket access.
+> ⚠️ ARP scanning requires raw socket access. Run as **root** on Linux/macOS or **Administrator** on Windows.
 
-### 🧠 How It Works
-| Step |  Description  |
-|------|---------------|
-|   1    |  Checks if the script is running with admin/root privileges  |
-|   2    | Prompts the user for an IP range in CIDR format and validates it  |
-|   3    |  Sends ARP requests to all addresses in the given range using Scapy  |
-|   4    |  Collects replies and extracts IP and MAC addresses from responding hosts  |
-|   5    |  Looks up each MAC address against Scapy's manufacturer database  |
-|   6    |  Displays all discovered hosts in a formatted table  |
+```bash
+# Linux / macOS
+sudo python phantarp.py
 
-### ⚙️ How ARP Scanning Works
-ARP (Address Resolution Protocol) is used to map IP addresses to MAC addresses on a local network. 
-PHANTARP broadcasts ARP requests asking "Who has IP x.x.x.x?" — any active device on the network will respond with its MAC address, revealing its presence.
+# Windows (run terminal as Administrator)
+python phantarp.py
+```
 
-### ⚠️ Legal Disclaimer
-This tool is intended for authorized network auditing and educational purposes only. 
-Scanning networks without explicit permission from the network owner may be illegal depending on your jurisdiction. 
-Always obtain proper authorization before scanning any network you do not own.
+When prompted, enter an IP range in CIDR notation:
 
-###  🛠️ Built With
-####  Python 3 — Core language
-####  Scapy — Packet crafting and ARP scanning
-####  re[regex] — IP range input validation
-####  os / ctypes — Cross-platform privilege detection
+```
+Enter IP range (e.g. 192.168.1.0/24): 192.168.1.0/24
+```
 
-### 📝 License
+---
+
+## How It Works
+
+| Step | Description |
+|------|-------------|
+| 1 | Verifies the script is running with admin/root privileges |
+| 2 | Prompts for an IP range in CIDR format and validates the input |
+| 3 | Broadcasts ARP requests to every address in the range via Scapy |
+| 4 | Collects replies and extracts IP and MAC addresses from responding hosts |
+| 5 | Resolves each MAC address to a manufacturer using Scapy's OUI database |
+| 6 | Displays all discovered hosts in a formatted table |
+
+### Why ARP?
+
+ARP (Address Resolution Protocol) maps IP addresses to MAC addresses on a local network. PHANTARP sends broadcast ARP requests asking *"Who has IP x.x.x.x?"* — any active device will respond with its MAC address, revealing its presence on the network.
+
+---
+
+## Built With
+
+| Component | Purpose |
+|-----------|---------|
+| [Python 3](https://www.python.org/) | Core language |
+| [Scapy](https://scapy.net/) | Packet crafting and ARP scanning |
+| `re` | IP range input validation |
+| `os` / `ctypes` | Cross-platform privilege detection |
+
+---
+
+## Legal Disclaimer
+
+This tool is intended for **authorized network auditing and educational purposes only**. Scanning networks without explicit permission from the network owner may be illegal in your jurisdiction. Always obtain proper authorization before scanning any network you do not own.
+
+---
+
+## License
+
 This project is open source and available under the [MIT License](https://opensource.org/licenses/MIT).
